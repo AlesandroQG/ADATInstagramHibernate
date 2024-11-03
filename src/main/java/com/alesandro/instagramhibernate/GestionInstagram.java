@@ -72,7 +72,7 @@ public class GestionInstagram {
         }
     }
 
-    public static void selectAll() {
+    /*public static void selectAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         DaoUsuario daoUsuario = new DaoUsuario();
         DaoContenido daoContenido = new DaoContenido();
@@ -93,11 +93,26 @@ public class GestionInstagram {
             }
             System.out.println("\n\n");
         }
+    }*/
+
+    public static void selectAll2() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        DaoContenido daoContenido = new DaoContenido();
+        List<Contenido> resultados = daoContenido.findAll(session);
+        for (int i = 0; i < resultados.size(); i++) {
+            System.out.println("Nombre: " + resultados.get(i).getNombre());
+            System.out.println("Cuenta creadora: " + resultados.get(i).getCuentaCreadora().getCuenta());
+            System.out.println(resultados.get(i).getUsuarios().toString());
+
+
+        }
     }
 
     public static void main(String[] args) {
         //cargarCsv();
         // Select de todos datos
-        selectAll();
+        //selectAll();
+        // USAR SELECTALL2() EN VEZ DE selectAll()
+        selectAll2();
     }
 }

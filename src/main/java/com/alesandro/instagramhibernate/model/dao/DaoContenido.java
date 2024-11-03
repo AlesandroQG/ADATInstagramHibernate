@@ -40,4 +40,9 @@ public class DaoContenido {
         transaction.commit();
     }
 
+    public List<Contenido> findAll(Session session) {
+        // Consulta JPQL para obtener todos los contenidos
+        return session.createSelectionQuery("SELECT c FROM Contenido c", Contenido.class).getResultList();
+    }
+
 }
